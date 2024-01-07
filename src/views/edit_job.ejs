@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post a new job</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="apply.css" />
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans", sans-serif;
+    }
+    
+    body {
+      height: 100vh;
+      width: 100%;
+      background: url("images/hero-bg.jpg") center/cover no-repeat;
+      /* background-color: #000; */
+    }
+    
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      padding: 0 10px;
+      background-color: #000;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    .navbar {
+      display: flex;
+      padding: 22px 0;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      justify-content: space-between;
+    }
+    
+    .navbar .hamburger-btn {
+      display: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    .navbar .logo {
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    
+    .navbar .logo img {
+      width: 40px;
+      border-radius: 50%;
+    }
+    
+    .navbar .logo h2 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.7rem;
+    }
+    
+    .navbar .links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+      align-items: center;
+    }
+    
+    .navbar .close-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: none;
+      color: #000;
+      cursor: pointer;
+    }
+    
+    .navbar .links a {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.1s ease;
+    }
+    
+    .navbar .links a:hover {
+      color: #19e8ff;
+    }
+    
+    .navbar .login-btn {
+      border: none;
+      outline: none;
+      background: #fff;
+      color: #275360;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+    
+    .navbar .login-btn:hover {
+      background: #ddd;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0px auto;
+      margin-top: 110px;
+    }
+    
+    .apply-box {
+      max-width: 600px;
+      padding: 20px;
+    
+      margin: 0px auto;
+      margin-top: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 40px;
+    }
+    
+    .title-small {
+      font-size: 20px;
+    }
+    
+    .form-container {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .form-control {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    label {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    
+    input,
+    select,
+    textarea {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+    
+    input:focus {
+      outline-color: royalblue;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    
+    button {
+      background-color: royalblue;
+      border: transparent solid 2px;
+      padding: 5px 10px;
+      color: white;
+      border-radius: 8px;
+    }
+    
+    button:hover {
+      background-color: red;
+      border: 2px solid royalblue;
+      color: white;
+      transition: 0.3s ease-out;
+      cursor: pointer;
+    }
+    
+    .textarea-control {
+      grid-column: 1 / span 2;
+    }
+    
+    .textarea-control textarea {
+      width: 100%;
+    }
+    
+    @media (max-width: 460px) {
+      .textarea-control {
+        grid-column: 1 / span 1;
+      }
+    }
+    
+    .big {
+      width: 200%;
+    }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <span class="hamburger-btn material-symbols-rounded">menu</span>
+        <a href="/jobs" class="logo">
+          <!-- <img src="images/logo.jpg" alt="logo" /> -->
+          <h2>Easily</h2>
+        </a>
+        <!-- <ul class="links">
+          <span class="close-btn material-symbols-rounded">close</span>
+          <li><a href="#">Home</a></li> 
+        </ul> -->
+        <a style="text-decoration: none; color: black" href="/logout">
+          <button class="login-btn">LOG OUT</button>
+        </a>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="apply-box">
+          <h1>Update job </h1>
+
+          <form action="/edit/<%= job.id %>" method="POST" enctype="application/x-www-form-urlencoded">
+            <div class="form-container">
+              <div class="form-control">
+                <label for="name">Company Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter Company Name"
+                />
+              </div>
+              <div class="form-control">
+                <label for="location">City</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  placeholder="Enter Location"
+                />
+              </div>
+              <div class="form-control">
+                <label for="date">Apply by</label>
+                <input
+                  value="2022-10-24"
+                  type="date"
+                  id="date"
+                  name="date"
+                  placeholder="Enter Date"
+                />
+              </div>
+              <div class="form-control">
+                <label for="salary">Salary</label>
+                <input
+                  type="text"
+                  id="salary"
+                  name="salary"
+                  placeholder="in LPA (for eg:- 10LPA)"
+                />
+              </div>
+              <div class="form-control">
+                <label for="openings">Openings</label>
+                <input
+                  type="number"
+                  id="openings"
+                  name="openings"
+                  step="1"
+                  placeholder="Enter No. of Openings"
+                />
+              </div>
+              <div class="form-control ">
+                <label for="designation ">Job Role</label>
+                <select name="designation" id="designation">
+                  <option value="">Select Job Role</option>
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="AI/ML Engineer">AI/ML Engineer</option>
+                  <option value="Frontend Developer">Frontend Developer</option>
+                  <option value="Backend Developer">Backend Developer</option>
+                  <option value="MERN Developer">MERN Developer</option>
+                  <option value="Human Resource Manager">
+                    Human Resource Manager
+                  </option>
+                  <option value="Assistant Product Manager">
+                    Assistant Product Manager
+                  </option>
+                  <option value="Ui/Ux Designer">UI & UX Designer</option>
+                </select>
+              </div>
+              <div class="form-control big">
+                <label for="skills">Skills</label>
+                <input
+                  type="text"
+                  id="skills"
+                  name="skills"
+                  placeholder="Enter Skills Required"
+                />
+              </div>
+
+              <div class="textarea-control">
+                <label for="description">Description</label>
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="50"
+                  rows="4"
+                  placeholder="Enter Job Description"
+                ></textarea>
+              </div>
+
+            <div class="button-container">
+              <button type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

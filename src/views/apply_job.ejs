@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply for the job</title>
+    <link rel="stylesheet" href="apply.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        width: 100%;
+        background: url("images/hero-bg.jpg") center/cover no-repeat;
+        /* background-color: #000; */
+      }
+
+      header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        padding: 0 10px;
+        background-color: #000;
+      }
+
+      .navbar {
+        display: flex;
+        padding: 22px 0;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: space-between;
+      }
+
+      .navbar .hamburger-btn {
+        display: none;
+        color: #fff;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      .navbar .logo {
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .navbar .logo img {
+        width: 40px;
+        border-radius: 50%;
+      }
+
+      .navbar .logo h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.7rem;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0px auto;
+        margin-top: 110px;
+      }
+
+      .apply-box {
+        max-width: 600px;
+        padding: 20px;
+
+        margin: 0px auto;
+        margin-top: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 40px;
+      }
+
+      .title-small {
+        font-size: 20px;
+      }
+
+      .form-container {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+      }
+
+      .form-control {
+        display: flex;
+        flex-direction: column;
+      }
+
+      label {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+
+      input,
+      select,
+      textarea {
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 15px;
+      }
+
+      input:focus {
+        outline-color: royalblue;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+      }
+
+      button {
+        background-color: royalblue;
+        border: transparent solid 2px;
+        padding: 5px 10px;
+        color: white;
+        border-radius: 8px;
+      }
+
+      button:hover {
+        background-color: red;
+        border: 2px solid royalblue;
+        color: white;
+        transition: 0.3s ease-out;
+        cursor: pointer;
+      }
+
+      .textarea-control {
+        grid-column: 1 / span 2;
+      }
+
+      .textarea-control textarea {
+        width: 100%;
+      }
+
+      @media (max-width: 460px) {
+        .textarea-control {
+          grid-column: 1 / span 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <span class="hamburger-btn material-symbols-rounded">menu</span>
+        <a href="/jobs" class="logo">
+          <!-- <img src="images/logo.jpg" alt="logo" /> -->
+          <h2>Easily</h2>
+        </a>
+        <!-- <ul class="links">
+          <span class="close-btn material-symbols-rounded">close</span>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+        <%if(!locals.userEmail) {%>
+        <button class="login-btn">LOG IN</button>
+        <%} else {%>
+        <a style="text-decoration: none; color: black" href="">
+          <button class="login-btn">LOG OUT</button>
+        </a>
+        <%}%> -->
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="apply-box">
+          <h1>Job Application</h1>
+
+          <form
+            action="/apply/<%=job.id%>"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-container">
+              <div class="form-control">
+                <label for="name">Applicant Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter Your Name"
+                />
+              </div>
+              <div class="form-control">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email"
+                />
+              </div>
+              <div class="form-control">
+                <label for="contact">Contact no.</label>
+                <input
+                  type="text"
+                  id="contact"
+                  name="contact"
+                  placeholder="Enter Contact no."
+                />
+              </div>
+
+              <div class="textarea-control">
+                <label for="address">Address</label>
+                <textarea
+                  name="address"
+                  id="address"
+                  cols="50"
+                  rows="4"
+                  placeholder="Enter Address"
+                ></textarea>
+              </div>
+              <div class="form-control">
+                <label for="resume">Upload Your CV</label>
+                <input type="file" id="resume" name="resume" />
+              </div>
+            </div>
+            <div class="button-container">
+              <button type="submit">Apply Now</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
