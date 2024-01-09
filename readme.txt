@@ -1,1 +1,1 @@
-Markup :  ### Heading 3 ###
+### Heading 3 ###
