@@ -1,6 +1,1 @@
-Ouput :-  
-
-Created jobs
-Created a new job functionality
-Created applicant functionality
-Created job details
+<h1> A job Portal Application </h1>
