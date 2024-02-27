@@ -12,6 +12,7 @@ export default class JobController {
     const { designation, description, location, name, salary, openings, date } =
       req.body;
     const skills = req.body.skills.split(",");
+    console.log(skills);
     const applicants = 0;
     const job = new JobModel(
       designation,
